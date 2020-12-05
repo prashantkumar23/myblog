@@ -58,7 +58,11 @@ export const data = graphql`
       }
     }
 
-    mobileQuery: allContentfulBlogPost {
+    mobileQuery: allContentfulBlogPost(
+      sort: { fields: createdAt, order: DESC }
+      skip: $skip
+      limit: $limit
+    ) {
       edges {
         node {
           title
