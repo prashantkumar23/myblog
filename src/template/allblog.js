@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 export const data = graphql`
   query($skip: Int!, $limit: Int!) {
-    allContentfulBlogPost(
+    desktopQuery: allContentfulBlogPost(
       sort: { fields: createdAt, order: DESC }
       skip: $skip
       limit: $limit
@@ -41,7 +41,33 @@ export const data = graphql`
           slug
           createdAt(fromNow: true)
           image {
-            fluid(maxWidth: 350, quality: 100) {
+            fluid(
+              maxWidth: 350
+              quality: 100
+              toFormat: WEBP
+              resizingBehavior: FILL
+            ) {
+              src
+            }
+          }
+        }
+      }
+    }
+
+    mobileQuery: allContentfulBlogPost {
+      edges {
+        node {
+          title
+          slug
+          createdAt(fromNow: true)
+          image {
+            fluid(
+              maxWidth: 151
+              maxHeight: 151
+              quality: 100
+              toFormat: WEBP
+              resizingBehavior: FILL
+            ) {
               src
             }
           }
@@ -53,6 +79,7 @@ export const data = graphql`
 
 const Body = ({ data, pageContext }) => {
   const classes = useStyles()
+  const { desktopQuery, mobileQuery } = data
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,7 +87,7 @@ const Body = ({ data, pageContext }) => {
         <div className={classes.bodyGridContainer}>
           <Hidden only={["xs"]}>
             <Grid container justify="flex-start" spacing={2}>
-              {data.allContentfulBlogPost.edges.map(edge => {
+              {desktopQuery.edges.map(edge => {
                 return (
                   <Grid item key={edge.node.slug} xs={12} md={4} sm={6} lg={4}>
                     <Card
@@ -76,7 +103,7 @@ const Body = ({ data, pageContext }) => {
           </Hidden>
           <Hidden only={["sm", "md", "lg", "xl"]}>
             <Grid container justify="center" spacing={2}>
-              {data.allContentfulBlogPost.edges.map(edge => {
+              {mobileQuery.edges.map(edge => {
                 return (
                   <Grid item key={edge.node.slug} xs={12}>
                     <MobileCard
