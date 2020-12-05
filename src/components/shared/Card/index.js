@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
-import { Link } from "gatsby"
+import Link from "gatsby-plugin-transition-link"
 
 const useStyles = makeStyles({
   root: {
@@ -28,7 +28,7 @@ const Blogcard = ({ title, imageUrl, publishedDate, link }) => {
   const classes = useStyles()
 
   return (
-    <Card className={classes.root} elevation={1} variant="outlined">
+    <Card className={classes.root} elevation={0} variant="outlined">
       <CardActionArea>
         <CardMedia component="img" alt={title} height="140" image={imageUrl} />
         <CardContent className={classes.cardContent}>

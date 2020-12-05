@@ -6,13 +6,21 @@ const useStyles = makeStyles({
     width: "100%",
     display: "flex",
     justifyContent: "center",
+    left: 0,
+    bottom: 0,
+    position: "absolute",
+    height: "30px",
   },
 })
 
 const Footer = () => {
   const classes = useStyles()
 
-  return <div className={classes.footerContainer}>Footer</div>
+  return (
+    <footer className={classes.footerContainer}>
+      Copywrite &#169; Codelit
+    </footer>
+  )
 }
 
 export default Footer

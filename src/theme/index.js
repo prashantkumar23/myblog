@@ -10,9 +10,11 @@ export const theme = createMuiTheme({
     },
     background: {
       default: "#393232",
+      paper: "rgb(220, 221, 215)",
     },
     text: {
-      primary: "#ed8d8d",
+      primary: "rgb(42, 46, 47)",
+      secondary: "rgb(42, 46, 47)",
     },
   },
   typography: {
@@ -33,16 +35,48 @@ export const theme = createMuiTheme({
     caption: {
       fontFamily: "Libre Baskerville",
       fontWeight: "100",
+      opacity: 0.8,
     },
   },
   overrides: {
     MuiToolbar: {
       root: {
-        backgroundColor: "#393232",
+        backgroundColor: "rgb(220, 221, 215)",
       },
     },
     MuiCard: {
-      root: {},
+      root: {
+        background: "rgb(185, 152, 133)",
+      },
+    },
+    MuiButton: {
+      root: {
+        color: "rgb(42, 46, 47)",
+      },
     },
   },
 })
+
+theme.typography.h1 = {
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "7rem",
+  },
+}
+
+theme.typography.h2 = {
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "3rem",
+  },
+}
+
+theme.typography.h5 = {
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "1rem",
+  },
+}
+
+theme.typography.caption = {
+  [theme.breakpoints.only("xs")]: {
+    fontSize: ".8rem",
+  },
+}

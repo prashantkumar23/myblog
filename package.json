@@ -30,6 +30,7 @@
     "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-react-helmet": "^3.6.0",
     "gatsby-plugin-sharp": "^2.10.0",
+    "gatsby-plugin-transition-link": "^1.20.5",
     "gatsby-remark-images": "^3.7.0",
     "gatsby-remark-relative-images": "^2.0.2",
     "gatsby-source-contentful": "^4.2.0",

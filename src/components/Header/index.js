@@ -11,11 +11,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   title: {
-    // flexGrow: 1,
     textDecoration: "none",
-    color: "white",
+    color: "rgb(42, 46, 47)",
     "&:active": {
-      color: "white",
+      color: "rgb(42, 46, 47)",
     },
   },
   titleContainer: {

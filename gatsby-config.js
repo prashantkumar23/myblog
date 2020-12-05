@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-material-ui`,
+    `gatsby-plugin-transition-link`,
     `@contentful/gatsby-transformer-contentful-richtext`,
     {
       resolve: `gatsby-plugin-google-fonts`,

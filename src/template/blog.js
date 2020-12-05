@@ -1,16 +1,16 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Layout from "../components/Layout"
 import Head from "../components/Head"
 import { Typography, Paper } from "@material-ui/core"
+import { theme } from "../theme"
 
 const useStyles = makeStyles(theme => ({
   heading: {
     fontFamily: "Libre Baskerville",
     fontWeight: "700",
-    color: "#aaccff",
   },
   body: {
     fontFamily: "Source Sans Pro",
@@ -18,8 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   postWrapper: {
     paddingTop: "1em",
-    background: "#1f1a24",
-    color: "white",
+    padding: "0.5em",
   },
 }))
 
@@ -53,23 +52,25 @@ const Blog = props => {
   // }
 
   return (
-    <Layout>
-      <Head title={props.data.contentfulBlogPost.title} />
-      <Paper className={classes.postWrapper} elevation={0}>
-        <Typography variant="h2" className={classes.heading}>
-          {props.data.contentfulBlogPost.title}{" "}
-        </Typography>
-        <Typography variant="caption">
-          {props.data.contentfulBlogPost.publishedDate}
-        </Typography>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Head title={props.data.contentfulBlogPost.title} />
+        <Paper className={classes.postWrapper} elevation={0}>
+          <Typography variant="h2" className={classes.heading}>
+            {props.data.contentfulBlogPost.title}{" "}
+          </Typography>
+          <Typography variant="caption">
+            {props.data.contentfulBlogPost.publishedDate}
+          </Typography>
 
-        <div className={classes.body}>
-          {documentToReactComponents(
-            JSON.parse(props.data.contentfulBlogPost.body.raw)
-          )}
-        </div>
-      </Paper>
-    </Layout>
+          <div className={classes.body}>
+            {documentToReactComponents(
+              JSON.parse(props.data.contentfulBlogPost.body.raw)
+            )}
+          </div>
+        </Paper>
+      </Layout>
+    </ThemeProvider>
   )
 }
 

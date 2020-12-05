@@ -13,9 +13,11 @@ const useStyles = makeStyles(theme => ({
   bodyGridContainer: {
     width: "100%",
     paddingTop: "2em",
+    background: "rgb(220, 221, 215)",
   },
   buttonContainer: {
     width: "100%",
+
     display: "flex",
     justifyContent: "center",
     padding: "2em",
@@ -25,6 +27,8 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       background: "transparent",
     },
+    fontFamily: "Source Sans Pro",
+    fontWeight: "700",
   },
 }))
 
@@ -102,7 +106,12 @@ const Body = ({ data, pageContext }) => {
             </Grid>
           </Hidden>
           <Hidden only={["sm", "md", "lg", "xl"]}>
-            <Grid container justify="center" spacing={2}>
+            <Grid
+              container
+              justify="center"
+              spacing={2}
+              style={{ padding: ".5em" }}
+            >
               {mobileQuery.edges.map(edge => {
                 return (
                   <Grid item key={edge.node.slug} xs={12}>
@@ -128,6 +137,7 @@ const Body = ({ data, pageContext }) => {
             >
               Previous
             </Button>
+
             <Button
               component={Link}
               to={pageContext.nextPagePath}

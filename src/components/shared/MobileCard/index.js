@@ -43,7 +43,7 @@ const MobileCard = ({ title, imageUrl, createdAt, link }) => {
               {createdAt}
             </Typography>
             <Button
-              variant="outlined"
+              variant="contained"
               color="secondary"
               component={Link}
               to={link}
